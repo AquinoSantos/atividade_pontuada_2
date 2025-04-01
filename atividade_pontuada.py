@@ -1,279 +1,99 @@
 import os
-os.system("clear")
+os.system("cls || clear")
 
-print("Restaurante Gourmet Tech\n")
+opcao = print(
 
-print("Confira nosso cardapio: ")
+    """Menu\tProduto\t\t\tValor
+ 1 - \tLasanha......... \tR$ 35,00
+ 2 - \tPizza........... \tR$ 40,00
+ 3 - \tHambúrguer...... \tR$ 25,00
+ 4 - \tSushi........... \tR$ 50,00
+ 5 - \tSalada.......... \tR$ 20,00
+ 6 - \tBife à Parmegiana\tR$ 30,00
+ 7 - \tFrango Grelhado. \tR$ 28,00
+ 0 - \tpara encerrar o pedido""")
 
-soma = 0
-contador = 0
-quantidade = 0
-valor = 0
-desconto = 0
+
 subtotal = 0
-acrescimo = 0
-total = 0
+pedidos = ""
+continuar = True
 
-
-
-
-  
-while True:
-
-    opcao = int(input("""
-    Codigo  \t\t Prato \t\t\t valor
-        1   \t\t Picanha \t\t R$ 25,00
-        2   \t\t Lasanha \t\t R$ 20,00
-        3   \t\t Strogonoff \t\t R$ 18,00
-        4   \t\t Bife acebolado \t R$ 15,00
-        5   \t\t Pão com ovo \t\t R$ 5,00
-        6   \t\t Refrigerante \t\t R$ 6.00
-        7  \t\t  Suco \t\t\t R$ 2.50
-                    
-    Digite a opção desejada: """))
-
-    match opcao:
-
-       case 1:
-
-         print("Prato escolhido: Picanha")
-         valor: 25.00
-
-       case 2:
-
-         print("Prato escolhido: Lasanha")
-
-         valor: 20.00
-
-       case 3:
-
-        print("Prato escolhido: Strogonoff")
-
-        valor: 18.00
-
-       case 4:
-
-        
-        print("Prato escolhido: Bife acebolado")
-
-        valor: 15.00
-
-       case 5:
-        
-         print("Prato escolhido: Pão com ovo")
-
-         valor: 5.00
-
-       case 6:
-        
-         print("Prato escolhido: Refrigerante")
-
-         valor: 6.00
-
-       case 7:
-        
-         print("Prato escolhido: Suco")
-
-         valor: 2.50
-
-       case _:
-
-
-        print("Codigo invalido, insira um codigo novamente")
-
-
-        opcao = int(input("""
-        Codigo  \t\t Prato \t\t\t valor
-            1   \t\t Picanha \t\t R$ 25,00
-            2   \t\t Lasanha \t\t R$ 20,00
-            3   \t\t Strogonoff \t\t R$ 18,00
-            4   \t\t Bife acebolado \t R$ 15,00
-            5   \t\t Pão com ovo \t\t R$ 5,00
-            6   \t\t Refrigerante \t\t R$ 6.00
-            7  \t\t  Suco \t\t R$ 2.50
-                        
-        Digite a opção desejada: """))
-
-
-
-
-    quantidade = input("Deseja fazer outro pedido? (S ou N)").upper()
-
-    if quantidade == "N":
-      
-      break
-
-    else:
-     
-     quantidade = int(input("Digite o outro pedido: "))
-
-
-     contador += 1
-
-     soma += opcao
-
-
-
-
-     if opcao == 0:
-
-        valor * 0.10
-
-        print(f"Valor total a pagar é {valor}")
-
-        break
-     
-    pagamento = int(input(""""
-    forma de pagamento\t\tdesconto
-        1\t\t Á vista\t\t 10 por cento de desconto
-        2\t\t Cartão de credito\t\t acréscimo de 10 por cento
-
-                           Digite a forma de pagamento:"""))
+while continuar:
     
+        codigo = int(input("\nDigite o código do prato desejado: "))
 
-    if pagamento == 1:
+        if codigo == 1:
+            subtotal += 35.00
+            pedidos += "Lasanha (R$ 35,00)\n"
+            print("\nPrato 'Lasanha' adicionado ao pedido.")
 
-        print("Certo, calculando valor")
+        elif codigo == 2:
+            subtotal += 40.00
+            pedidos += "Pizza (R$ 40,00)\n"
+            print("\nPrato 'Pizza' adicionado ao pedido.")
 
+        elif codigo == 3:
+            subtotal += 25.00
+            pedidos += "Hambúrguer (R$ 25,00)\n"
+            print("\nPrato 'Hambúrguer' adicionado ao pedido.")
 
-    else:
-        print("Certo, calculando valor")
+        elif codigo == 4:
+            subtotal += 50.00
+            pedidos += "Sushi (R$ 50,00)\n"
+            print("\nPrato 'Sushi' adicionado ao pedido.")
 
+        elif codigo == 5:
+            subtotal += 20.00
+            pedidos += "Salada (R$ 20,00)\n"
+            print("\nPrato 'Salada' adicionado ao pedido.")
 
+        elif codigo == 6:
+            subtotal += 30.00
+            pedidos += "Bife à Parmegiana (R$ 30,00)\n"
+            print("\nPrato 'Bife à Parmegiana' adicionado ao pedido.")
 
+        elif codigo == 7:
+            subtotal += 28.00
+            pedidos += "Frango Grelhado (R$ 28,00)\n"
+            print("\nPrato 'Frango Grelhado' adicionado ao pedido.")
+
+        elif codigo == 0:
+            continuar = False
+
+        else:
+            print("\nCódigo inválido. Por favor, escolha um código válido.")
     
-    match pagamento:
-
-        case 1:
-           
-           valor * 0.10
-           
-           if opcao == 1:
-             
-             subtotal = valor
-             desconto = valor - 0.10
-             total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Picanha")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-           elif opcao == 2:
-             
-             subtotal = valor
-             desconto = valor - 0.10
-             total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Lasanha")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-           elif opcao == 3:
-             
-             subtotal = valor
-             desconto = valor - 0.10
-             total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Strogonoff")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-            elif opcao == 4:
-             
-              subtotal = valor
-              desconto = valor - 0.10
-              total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Bife acebolado")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-            elif opcao == 5:
-             
-             subtotal = valor
-             desconto = valor - 0.10
-             total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Pão com ovo")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-            elif opcao == 6:
-             
-               subtotal = valor
-               desconto = valor - 0.10
-               total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Refrigerante")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-            elif opcao == 7:
-             
-             subtotal = valor
-             desconto = valor - 0.10
-             total = valor + contador
-
-             print(f"Prato escolhido: {opcao} Suco")
-             print(f"o subtotal a pagar é: {subtotal}")
-             print(f"A forma de pagamento escolhida foi: {pagamento}")
-             print(f"o valor do desconto foi de: {desconto} ")
-             print(f"O valor total a pagar é: {total}")
-
-
-           
-
-
         
 
-
-        
-        
-
-
-        
-           
-        
-      
-
-
-
-
-        
-
-
-
-
-
-
-
-
+if subtotal > 0:
     
+    print("\n--- Pedido Finalizado ---")
+    print("Pratos escolhidos:")
+    print(pedidos)
+    print(f"Subtotal: R$ {subtotal:.2f}")
 
+    while True:
+        forma_pagamento = input("\nEscolha a forma de pagamento (1- À vista / 2- Cartão de Crédito): ")
 
+        if forma_pagamento in ["1", "2"]:
+            break
 
-      
+        else:
+            print("Opção inválida. Escolha '1' ou '2'.")
 
-        
+    if forma_pagamento == "1":
+        desconto = subtotal * 0.10
+        total = subtotal - desconto
+        print("\nForma de pagamento: À vista")
+        print(f"Desconto aplicado: R$ {desconto:.2f}")
 
-       
+    elif forma_pagamento == "2":
+        acrescimo = subtotal * 0.10
+        total = subtotal + acrescimo
+        print("\nForma de pagamento: Cartão de Crédito")
+        print(f"Acréscimo aplicado: R$ {acrescimo:.2f}")
 
-
-  
+    print(f"Total a pagar: R$ {total:.2f}")
+    
+else:
+    print("\nNenhum prato foi selecionado. Pedido encerrado.")
